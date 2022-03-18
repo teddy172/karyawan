@@ -18,8 +18,8 @@ public class Training implements Serializable {
     @Column(name = "tema", nullable = false, length = 45)
     private String tema;
 
-    @Column(name = "namaPengajar", nullable = false, length = 18)
-    private String namaPengajar;
+    @Column(name = "Pengajar", nullable = false, length = 18)
+    private String pengajar;
 
     @OneToMany(mappedBy = "training", cascade = CascadeType.ALL, orphanRemoval = true)
     List<KaryawanTraining> karyawanTrainings;

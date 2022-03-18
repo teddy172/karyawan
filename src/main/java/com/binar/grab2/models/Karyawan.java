@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "karyawan")
-public class Karyawan implements Serializable {
+public class Karyawan extends AbstractDate implements Serializable {
 
     @Id
     @Column(name = "id")
@@ -34,5 +34,11 @@ public class Karyawan implements Serializable {
 
     @OneToMany(mappedBy = "karyawan")
     List<Rekening> rekenings;
+
+    @OneToOne(mappedBy = "karyawan")
+    private DetailKaryawan detailKaryawan;
+
+//    @OneToOne(mappedBy = "karyawan")
+//    private DetailKaryawan detailKaryawan;
 
 }

@@ -21,5 +21,5 @@ public class KaryawanTraining implements Serializable {
     @JoinColumn(name = "id_karyawan")
     Karyawan karyawan;
 
-    private String tanggalTraining;
+    private String tanggal;
 }

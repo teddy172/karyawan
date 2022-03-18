@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Karyawan List</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>Karyawan List</h1>
+
+<div>
+    <nobr>
+        <a th:href="@{/v2/view/karyawan/add}">Add Karyawan</a> |
+        <a th:href="@{/v2/view/karyawan/}">Back to Index</a>
+    </nobr>
+</div>
+<br/><br/>
+<div>
+    <table border="1">
+        <tr>
+            <th>Nama</th>
+            <th>Jk</th>
+            <th>Alamat</th>
+            <th>Status</th>
+        </tr>
+        <tr th:each ="karyawan : ${karyawans}">
+            <td><a th:href="@{/v2/view/karyawan/{karyawanId}(karyawanId=${karyawan.id})}" th:utext="${karyawan.nama}">...</a></td>
+            <td><a th:href="@{/v2/view/karyawan/{karyawanId}(karyawanId=${karyawan.id})}" th:utext="${karyawan.jk}">...</a></td>
+            <td th:utext="${karyawan.alamat}">...</td>
+            <td th:utext="${karyawan.status}">...</td>
+            <td><a th:href="@{/v2/view/karyawan/{karyawanId}/edit(karyawanId=${karyawan.id})}">Edit</a></td>
+<!--            <td><a th:href="@{/v2/view/karyawan/{karyawanId}/delete(karyawanId=${karyawan.id)}">delete</a></td>-->
+        </tr>
+    </table>
+</div>
+<br/><br/>
+<div>
+    <nobr>
+        <span th:if="${hasPrev}"><a th:href="@{/v2/view/karyawan/list?page={prev}(prev=${prev})}">Prev</a>&nbsp;&nbsp;&nbsp;</span>
+        <span th:if="${hasNext}"><a th:href="@{/v2/view/karyawan/list?page={next}(next=${next})}">Next</a></span>
+    </nobr>
+</div>
+</body>
+</html>

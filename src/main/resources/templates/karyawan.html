@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>View Karyawan</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>View Karyawan</h1>
+<a th:href="@{/v2/view/karyawan/list}">Back to Karyawan List</a>
+<br/><br/>
+<div th:if="${karyawan}">
+    <table border="0">
+        <tr>
+            <td>Name</td>
+            <td>:</td>
+            <td th:utext="${karyawan.nama}">...</td>
+        </tr>
+        <tr>
+            <td>Alamat</td>
+            <td>:</td>
+            <td th:utext="${karyawan.alamat}">...</td>
+        </tr>
+        <tr>
+            <td>Jk</td>
+            <td>:</td>
+            <td th:utext="${karyawan.jk}">...</td>
+        </tr>
+        <tr>
+            <td>Status</td>
+            <td>:</td>
+            <td th:utext="${karyawan.status}">...</td>
+        </tr>
+    </table>
+    <br/><br/>
+    <div th:if="not ${allowDelete}">
+        <a th:href="@{/v2/view/karyawan/{karyawanId}/edit(karyawanId=${karyawan.id})}">Edit</a> |
+        <a th:href="@{/v2/view/karyawan/{karyawanId}/delete(karyawanId=${karyawan.id})}">Delete</a>
+    </div>
+<!--    <form th:if="${allowDelete}" th:action="@{/v2/view/karyawan/{karyawanId}/delete(karyawanId=${karyawan.id})}" method="POST">-->
+<!--        Delete this karyawan? <input type="submit" th:value="Yes" />-->
+<!--    </form>-->
+    <form th:if="${allowDelete}" th:action="@{/v2/view/karyawan/{karyawanId}/delete(karyawanId=${karyawan.id})}" method="POST">
+        Delete this karyawan 2? <input type="submit" th:value="Yes" />
+    </form>
+</div>
+<div th:if="${errorMessage}" th:utext="${errorMessage}" class="error" />
+</body>
+</html>

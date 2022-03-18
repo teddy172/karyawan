@@ -5,12 +5,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-public class TemplateRespon {
+public class TemplateResponse {
     public Map templateSukses( Object objek){
         Map map = new HashMap();
         map.put("data", objek);
         map.put("message", "sukses");
-        map.put("status", "400");
+        map.put("status", "200");
         return map;
     }
     public Map templateError( Object objek){
